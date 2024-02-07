@@ -4,16 +4,16 @@ import ClassName from 'models/classname';
 import dynamicStyles from './Ct_image.module.scss';
 //import DynamicComponent from 'components/DynamicComponent';
 //import { toPascalCase } from '../utils/stringUtils';
-import { styleGenerator } from '../../lib/util';
+//import { styleGenerator } from '../../lib/util';
 
-const Ct_image = ({ child, className = '', src, alt, width, height, lazy = true, objectFit = 'cover', objectPosition = 'center center', ...rest }) => {
+const Ct_image = ({ child, className = '', alt, width, height, lazy = true, objectFit = 'cover', objectPosition = 'center center', ...rest }) => {
   // Esempio di utilizzo di ClassName per combinare className prop con stili del modulo
 
   const sectionClassName = new ClassName(dynamicStyles.section);
   className = child.options.classes ? child.options.classes.join(' ') : '';
   sectionClassName.addIf(className, className);
 
-  const generatedStyle = styleGenerator(child.options.original);
+  //const generatedStyle = styleGenerator(child.options.original);
 
   const imgStyle = {
     objectFit,
