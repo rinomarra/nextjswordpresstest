@@ -6,9 +6,9 @@ import DynamicComponent from 'components/DynamicComponent';
 const Ct_text_block = ({ child, ...rest }) => {
   const sectionClassName = new ClassName(styles.section);
   let className = child.options.classes ? child.options.classes.join(' ') : '';
-  console.log(child);
-  console.log(child.options.classes);
-  console.log('className', className);
+  console.log('text_block_child: ', child);
+  // console.log(child.options.classes);
+  // console.log('className', className);
 
   sectionClassName.addIf(className, className);
 
