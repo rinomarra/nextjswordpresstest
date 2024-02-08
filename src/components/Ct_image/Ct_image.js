@@ -34,7 +34,21 @@ const Ct_image = ({
   useEffect(() => {
     console.log('child', child);
   }, []);
-
+  if (options.src) {
+    return (
+      <img
+        id={child.options.selector}
+        src={options.src}
+        // alt={alt}
+        className={`${dynamicStyles.image} ${className}`}
+        // style={imgStyle}
+        // width={options.width}
+        // height={options.height}
+        loading={lazy ? 'lazy' : 'eager'}
+        {...rest}
+      />
+    );
+  }
   if (options.image_type == 1 || (options.image_type == 2 && !options.attachment_id)) {
     const src = options.attachment_url;
     const alt = options.alt;
