@@ -1,24 +1,17 @@
 import ClassName from 'models/classname';
 
-import styles from './Ct_text_block.module.scss';
+import styles from './Ct_inner_content.module.scss';
 import DynamicComponent from 'components/DynamicComponent';
-
-const Ct_text_block = ({ child, ...rest }) => {
+import { useEffect } from 'react';
+const Ct_inner_content = ({ child, className, ...rest }) => {
   const sectionClassName = new ClassName(styles.section);
-  let className = child.options.classes ? child.options.classes.join(' ') : '';
-  console.log(child);
-  console.log(child.options.classes);
-  console.log('className', className);
+  className = child.options.classes.join(' ');
 
   sectionClassName.addIf(className, className);
+  useEffect(() => {
+    console.log('child inner content', child);
+  }, []);
 
-  if (!child.children) {
-    return (
-      <h1 id={child.options.selector} className={className} {...rest}>
-        {child.options.ct_content}
-      </h1>
-    );
-  }
   return (
     <div id={child.options.selector} className={className} {...rest}>
       {child.children.map((subchild) => {
@@ -40,4 +33,4 @@ function toPascalCase(str) {
     .replace(/\s+/g, '');
 }
 
-export default Ct_text_block;
+export default Ct_inner_content;
