@@ -29,8 +29,7 @@ if (fs.existsSync(componentDir)) {
 
 fs.mkdirSync(componentDir, { recursive: true });
 
-// Template dei file
-// Template dei file JavaScript aggiornato con le nuove specifiche
+// Template dei file JavaScript da modificare in base alle esigenze dei componenti
 const jsContent = `import React from 'react';
 import ClassName from 'models/classname';
 import dynamicStyles from './${componentName}.module.scss';
@@ -42,7 +41,6 @@ const ${componentName} = ({ child, className, tag = 'div', ...rest }) => {
   // Esempio di utilizzo di ClassName per combinare className prop con stili del modulo
   const classNames = new ClassName(dynamicStyles.container, className);
 
-  // Esempio di generazione dinamica di stili, se necessario
   const generatedStyle = styleGenerator ? styleGenerator(child.options) : {};
 
   // Utilizzo del tag dinamico per il componente
@@ -58,8 +56,6 @@ const ${componentName} = ({ child, className, tag = 'div', ...rest }) => {
 export default ${componentName};
 `;
 
-// Nota: Il contenuto di scssContent e indexContent rimane invariato
-
 
 const scssContent = `.container {
   /* Stili del componente */
@@ -71,7 +67,7 @@ const indexContent = `import ${componentName} from './${componentName}';
 export default ${componentName};
 `;
 
-// Scrivi i file
+// Scrive i file
 fs.writeFileSync(path.join(componentDir, `${componentName}.js`), jsContent);
 fs.writeFileSync(path.join(componentDir, `${componentName}.module.scss`), scssContent);
 fs.writeFileSync(path.join(componentDir, 'index.js'), indexContent);
