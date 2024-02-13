@@ -40,7 +40,7 @@ export const QUERY_ALL_PAGES_INDEX = gql`
       edges {
         node {
           ...PageFields
-          ctBuilderJson
+           ctBuilderJson
         }
       }
     }
@@ -68,7 +68,7 @@ export const QUERY_ALL_PAGES = gql`
         node {
           ...PageFields
           content
-          ctBuilderJson
+           ctBuilderJson
           featuredImage {
             node {
               altText

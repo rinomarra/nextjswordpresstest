@@ -1,5 +1,5 @@
 import useSite from 'hooks/use-site';
-import { getPaginatedPosts } from 'lib/posts';
+import { getPageByUri, getAllPages, getBreadcrumbsByUri } from 'lib/pages';
 import { WebsiteJsonLd } from 'lib/json-ld';
 
 import Layout from 'components/Layout';
@@ -8,17 +8,18 @@ import Section from 'components/Section';
 import Container from 'components/Container';
 import PostCard from 'components/PostCard';
 import Pagination from 'components/Pagination';
-
+import Oxygen from 'components/Oxygen';
 import styles from 'styles/pages/Home.module.scss';
 
-export default function Home({ posts, pagination }) {
+export default function Home({ page }) {
   const { metadata = {} } = useSite();
-  const { title, description } = metadata;
+  const { title, description, children} = metadata;
+  const ctBuilderJson = page.ctBuilderJson;
 
   return (
     <Layout>
       <WebsiteJsonLd siteTitle={title} />
-      <Header>
+      {/* <Header>
         <h1
           dangerouslySetInnerHTML={{
             __html: title,
@@ -31,45 +32,37 @@ export default function Home({ posts, pagination }) {
             __html: description,
           }}
         />
-      </Header>
+      </Header> */}
 
-      <Section>
-        <Container>
-          <h2 className="sr-only">Posts</h2>
-          <ul className={styles.posts}>
-            {posts.map((post) => {
-              return (
-                <li key={post.slug}>
-                  <PostCard post={post} />
-                </li>
-              );
-            })}
-          </ul>
-          {pagination && (
-            <Pagination
-              addCanonical={false}
-              currentPage={pagination?.currentPage}
-              pagesCount={pagination?.pagesCount}
-              basePath={pagination?.basePath}
-            />
-          )}
-        </Container>
-      </Section>
+
+        
+      <Oxygen key='home' json={ctBuilderJson} />
+
     </Layout>
   );
 }
 
-export async function getStaticProps() {
-  const { posts, pagination } = await getPaginatedPosts({
-    queryIncludes: 'archive',
-  });
+export async function getStaticProps({ params = {} } = {}) {
+
+
+  let pageUri = `/`;
+
+ 
+
+  const { page } = await getPageByUri(pageUri);
+
+  if (!page) {
+    return {
+      props: {},
+      notFound: true,
+    };
+  }
+
   return {
     props: {
-      posts,
-      pagination: {
-        ...pagination,
-        basePath: '/posts',
-      },
+      page
     },
   };
+
+
 }

@@ -2,35 +2,30 @@ import ClassName from 'models/classname';
 
 import styles from './Ct_inner_content.module.scss';
 import DynamicComponent from 'components/DynamicComponent';
-import { useEffect } from 'react';
+import { styleGenerator } from '../../lib/util';
 const Ct_inner_content = ({ child, className, ...rest }) => {
   const sectionClassName = new ClassName(styles.section);
-  className = child.options.classes.join(' ');
-
+  className = child.options.classes ? child.options.classes.join(' ') : '';
   sectionClassName.addIf(className, className);
-  useEffect(() => {
-    console.log('child inner content', child);
-  }, []);
-
+  // const generatedStyle = styleGenerator(child.options.original);
   return (
-    <div id={child.options.selector} className={className} {...rest}>
+    <div  id={child.options.selector} className={className} {...rest}>
+
       {child.children.map((subchild) => {
         const name = toPascalCase(subchild.name);
-        {
-          name;
-        }
-        return <DynamicComponent name={name} child={subchild} />;
-      })}
+        {name}
+        return <DynamicComponent key={subchild.subchild}  name={name} child={subchild} />;
+      }
+      )}
+
     </div>
   );
 };
 
 function toPascalCase(str) {
-  return str
-    .replace(/(?:^\w|[A-Z]|\b\w|_)/g, function (word, index) {
+  return str.replace(/(?:^\w|[A-Z]|\b\w|_)/g, function(word, index) {
       return index === 0 ? word.toUpperCase() : word.toLowerCase();
-    })
-    .replace(/\s+/g, '');
-}
+  }).replace(/\s+/g, '');
+ }
 
 export default Ct_inner_content;

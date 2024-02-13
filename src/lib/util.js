@@ -38,6 +38,8 @@ export function removeExtraSpaces(text) {
  */
 export  function styleGenerator( original ){
 
+  if(!original) return [""];
+
     // make an array with unwanted keys
     const unwantedKeys = [ "globalConditionsResult", "conditionspreview", "conditionstype", "conditionsresult", "conditions","tag"];
     // unset the unwanted keys

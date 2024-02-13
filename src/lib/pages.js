@@ -149,7 +149,20 @@ export async function getAllPages(options = {}) {
   };
 }
 
+  // get the homepage
+  export async function getHomepage() {
+    const apolloClient = getApolloClient();
+    const data = await apolloClient.query({
+      query: QUERY_PAGE_BY_URI,
+      variables: {
+        uri: 'index',
+      },
+    });
 
+    const homepage = data?.data.page;
+
+    return homepage;
+  }
 
  function extractClasses(node) {
   let classes = [];

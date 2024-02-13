@@ -64,11 +64,11 @@ const Layout = ({ children }) => {
     <div className={styles.layoutContainer}>
       <Helmet {...helmetSettings} />
 
-      <Nav />
+      {/* <Nav /> */}
 
       <Main>{children}</Main>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
