@@ -15,7 +15,7 @@ export default function Home({ page }) {
   const { metadata = {} } = useSite();
   const { title, description, children} = metadata;
   const ctBuilderJson = page.ctBuilderJson;
-
+  console.log(ctBuilderJson)
   return (
     <Layout>
       <WebsiteJsonLd siteTitle={title} />

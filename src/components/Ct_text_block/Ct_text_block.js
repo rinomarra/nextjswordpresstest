@@ -11,7 +11,7 @@ const Ct_text_block = ({ child, className, ...rest }) => {
     className = child.options.classes.join(' ');
   }
 
-  console.log(child);
+
   sectionClassName.addIf(className, className);
 
   if (!child.children) {
