@@ -21,7 +21,19 @@ const Ct_new_columns = ({ child, tag = 'div', ...rest }) => {
   const Tag = tag;
 
   return (
-    <div id={child.options.selector} className={className} {...rest}>
+    <div
+      id={child.options.selector}
+      className={className}
+      {...rest}
+      style={{
+        display: 'flex',
+        width: '100%',
+        alignItems: 'stretch',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        flexDirection: 'column',
+      }}
+    >
       {child.children.map((subchild) => {
         const name = toPascalCase(subchild.name);
         {
