@@ -142,7 +142,9 @@ export async function getAllPages(options = {}) {
   });
   // remove duplicates from the classes array
   const uniqueClasses = [...new Set(classes)];
-  fs.writeFileSync('src/data/generate-custom-classes.js', uniqueClasses.join('\r\n'));
+  if (fs && typeof window === 'undefined') {
+    fs.writeFileSync('src/data/generate-custom-classes.js', uniqueClasses.join('\r\n'));
+  }
   
   return {
     pages,

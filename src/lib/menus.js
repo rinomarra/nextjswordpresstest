@@ -32,7 +32,7 @@ export async function getAllMenus() {
   };
 }
 
-export async function findMenuById({ menuId }) {
+export async function findMenuById( menuId ) {
   const apolloClient = getApolloClient();
 
   // Assicurati che menuId sia un intero
