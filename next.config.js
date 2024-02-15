@@ -32,11 +32,18 @@ const nextConfig = {
     WORDPRESS_GRAPHQL_ENDPOINT: process.env.WORDPRESS_GRAPHQL_ENDPOINT,
     WORDPRESS_MENU_LOCATION_NAVIGATION: process.env.WORDPRESS_MENU_LOCATION_NAVIGATION || 'PRIMARY',
     WORDPRESS_PLUGIN_SEO: parseEnvValue(process.env.WORDPRESS_PLUGIN_SEO, false),
+    
   },
+  images: {
+    domains: ['monika.ventunoandco.com'],
+  }
 };
+
 
 module.exports = () => {
   // add webpack config fs:false
+
+
   nextConfig.webpack = (config, options) => {
     config.resolve.fallback = { fs: false };
     return config;

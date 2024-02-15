@@ -20,8 +20,17 @@ import Breadcrumbs from 'components/Breadcrumbs';
 
 import styles from 'styles/pages/Page.module.scss';
 
+
+
+
+
 export default function Page({ page, breadcrumbs }) {
-  const { title, metaTitle, description, slug, content, featuredImage, children, ctBuilderJson } = page;
+  const { title, metaTitle, description, slug, content, featuredImage, children, ctBuilderJson, css } = page;
+
+
+  
+
+
 
   const { metadata: siteMetadata = {} } = useSite();
 
@@ -29,6 +38,7 @@ export default function Page({ page, breadcrumbs }) {
     metadata: {
       ...page,
       title: metaTitle,
+
       description: description || page.og?.description || `Read more about ${title}`,
     },
   });
@@ -37,6 +47,7 @@ export default function Page({ page, breadcrumbs }) {
     metadata.title = `${title} - ${siteMetadata.title}`;
     metadata.og.title = metadata.title;
     metadata.twitter.title = metadata.title;
+    metadata.style = JSON.parse(css);
   }
 
   const hasChildren = Array.isArray(children) && children.length > 0;
@@ -46,7 +57,9 @@ export default function Page({ page, breadcrumbs }) {
 
   return (
     <Layout>
-      <Helmet {...helmetSettings} />
+      <Helmet {...helmetSettings}>
+        <style type="text/css">{css}</style>
+      </Helmet>
 
       <WebpageJsonLd
         title={metadata.title}

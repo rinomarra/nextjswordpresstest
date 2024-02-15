@@ -9,11 +9,11 @@ const Ct_div_block = ({ child, className, ...rest }) => {
   className = child.options.classes ? child.options.classes.join(' ') : '';
   sectionClassName.addIf(className, className);
   const generatedStyle = styleGenerator(child.options.original);
-
+  let i = 0;
   if (!child.children) {
   
     return (
-      <div key={child.selector} style={generatedStyle} id={child.options.selector} className={className} {...rest}>
+      <div key={child.options.selector} style={generatedStyle} id={child.options.selector} className={className} {...rest}>
         {child.options.ct_content}
       </div>
     );
@@ -26,7 +26,7 @@ const Ct_div_block = ({ child, className, ...rest }) => {
       {child.children.map((subchild) => {
         const name = toPascalCase(subchild.name);
         {name}
-        return <DynamicComponent key={subchild.subchild}  name={name} child={subchild} />;
+        return <DynamicComponent key={subchild.selector + i++}  name={name} child={subchild} />;
       }
       )}
 

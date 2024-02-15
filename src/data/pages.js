@@ -41,6 +41,7 @@ export const QUERY_ALL_PAGES_INDEX = gql`
         node {
           ...PageFields
            ctBuilderJson
+           css
         }
       }
     }
@@ -69,6 +70,7 @@ export const QUERY_ALL_PAGES = gql`
           ...PageFields
           content
            ctBuilderJson
+           css
           featuredImage {
             node {
               altText
@@ -103,6 +105,7 @@ export const QUERY_PAGE_BY_URI = gql`
       }
       content
       ctBuilderJson
+      css
       featuredImage {
         node {
           altText

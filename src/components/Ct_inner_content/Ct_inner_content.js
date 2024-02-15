@@ -7,6 +7,7 @@ const Ct_inner_content = ({ child, className, ...rest }) => {
   const sectionClassName = new ClassName(styles.section);
   className = child.options.classes ? child.options.classes.join(' ') : '';
   sectionClassName.addIf(className, className);
+  let i = 0;
   // const generatedStyle = styleGenerator(child.options.original);
   return (
     <div  id={child.options.selector} className={className} {...rest}>
@@ -14,7 +15,7 @@ const Ct_inner_content = ({ child, className, ...rest }) => {
       {child.children.map((subchild) => {
         const name = toPascalCase(subchild.name);
         {name}
-        return <DynamicComponent key={subchild.subchild}  name={name} child={subchild} />;
+        return <DynamicComponent key={subchild.subchild + i++}  name={name} child={subchild} />;
       }
       )}
 

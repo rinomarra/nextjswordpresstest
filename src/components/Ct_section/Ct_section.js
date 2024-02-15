@@ -15,7 +15,7 @@ const Ct_section = ({ child, className, tag, ...rest }) => {
 
   const generatedStyle = styleGenerator(child.options.original);
 
-
+  let i = 0;
   if (child.options.original.tag != undefined) {
     tag = child.options.original.tag;
   }
@@ -39,7 +39,7 @@ const Ct_section = ({ child, className, tag, ...rest }) => {
       child.children.map((subchild) => {
         const name = toPascalCase(subchild.name);
         { name }
-          return <DynamicComponent key={subchild.selector} name={name} child={subchild} />;
+          return <DynamicComponent key={"section"+"-"+subchild.selector + i++} name={name} child={subchild} />;
         }
       )
       )}

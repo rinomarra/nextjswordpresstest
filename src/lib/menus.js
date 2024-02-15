@@ -1,6 +1,7 @@
 import { getApolloClient } from 'lib/apollo-client';
 import { getTopLevelPages } from 'lib/pages';
 import { QUERY_ALL_MENUS } from 'data/menus';
+import { QUERY_MENU_BY_ID } from 'data/menus';
 
 export const MENU_LOCATION_NAVIGATION_DEFAULT = 'DEFAULT_NAVIGATION';
 
@@ -30,6 +31,31 @@ export async function getAllMenus() {
     menus,
   };
 }
+
+export async function findMenuById({ menuId }) {
+  const apolloClient = getApolloClient();
+
+  const data = await apolloClient.query({
+    query: QUERY_MENU_BY_ID,
+      variables: { menuId },
+  });
+
+  const menus = data?.data.menus.edges.map(mapMenuData);
+
+  const defaultNavigation = createMenuFromPages({
+    locations: [MENU_LOCATION_NAVIGATION_DEFAULT],
+    pages: await getTopLevelPages({
+      queryIncludes: 'index',
+    }),
+  });
+
+  menus.push(defaultNavigation);
+
+  return {
+    menus,
+  };
+}
+
 
 /**
  * mapMenuData
@@ -105,4 +131,20 @@ export function findMenuByLocation(menus, location) {
   });
 
   return menu && parseHierarchicalMenu(menu.menuItems);
+}
+
+/**
+ * findMenuItemById
+ */
+
+export function findMenuItemById(id) {
+  if (!Array.isArray(menu)) {
+    throw new Error('Failed to find menu item by id - menu is not an array.');
+  }
+
+  const menuItem = menu.find((item) => {
+    return item.id === id;
+  });
+
+  return menuItem;
 }
