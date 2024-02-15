@@ -12,8 +12,6 @@ const Ct_new_columns = ({ child, tag = 'div', ...rest }) => {
   console.log('NEW_COLUM_child: ', child);
   const options = child.options.original;
 
-  console.log('Spread di rest:', rest);
-
   // Esempio di generazione dinamica di stili, se necessario
   // const generatedStyle = styleGenerator ? styleGenerator(child.options) : {};
 
@@ -23,23 +21,23 @@ const Ct_new_columns = ({ child, tag = 'div', ...rest }) => {
   return (
     <div
       id={child.options.selector}
-      className={className}
+      className={'ct-new-columns ' + className}
       {...rest}
-      style={{
-        display: 'flex',
-        width: '100%',
-        alignItems: 'stretch',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-        flexDirection: 'column',
-      }}
+      // style={{
+      //   display: 'flex',
+      //   width: '100%',
+      //   alignItems: 'stretch',
+      //   justifyContent: 'center',
+      //   flexWrap: 'wrap',
+      //   flexDirection: 'column',
+      // }}
     >
       {child.children.map((subchild) => {
         const name = toPascalCase(subchild.name);
         {
           name;
         }
-        return <DynamicComponent key={subchild.subchild} name={name} child={subchild} />;
+        return <DynamicComponent key={subchild.options.selector} name={name} child={subchild} />;
       })}
     </div>
   );

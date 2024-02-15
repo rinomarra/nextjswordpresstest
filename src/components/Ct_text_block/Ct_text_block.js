@@ -15,13 +15,13 @@ const Ct_text_block = ({ child, className, ...rest }) => {
 
   if (!child.children) {
     return (
-      <h1 id={child.options.selector} className={className} {...rest}>
+      <div id={child.options.selector} className={'ct-text-block ' + className} {...rest}>
         {child.options.ct_content}
-      </h1>
+      </div>
     );
   }
   return (
-    <div id={child.options.selector} className={className} {...rest}>
+    <div id={child.options.selector} className={'ct-text-block ' + className} {...rest}>
       {child.children.map((subchild) => {
         const name = toPascalCase(subchild.name);
         {

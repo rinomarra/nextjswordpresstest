@@ -10,23 +10,30 @@ const Ct_div_block = ({ child, className, ...rest }) => {
   sectionClassName.addIf(className, className);
   const generatedStyle = styleGenerator(child.options.original);
   let i = 0;
+  console.log('Child DIV Block', child);
   if (!child.children) {
     return (
-      <div key={child.options.selector} style={generatedStyle} id={child.options.selector} className={className} {...rest}>
+      <div
+        key={child.options.selector}
+        style={generatedStyle}
+        id={child.options.selector}
+        className={'ct-div-block ' + className}
+        {...rest}
+      >
         {child.options.ct_content}
       </div>
     );
   }
 
   return (
-    <div style={generatedStyle} id={child.options.selector} className={className} {...rest}>
+    <div style={generatedStyle} id={child.options.selector} className={'ct-div-block ' + className} {...rest}>
       {child.children.map((subchild, i) => {
         const name = toPascalCase(subchild.name);
-        {name}
-        return <DynamicComponent key={subchild.selector + i++}  name={name} child={subchild} />;
-      }
-      )}
-
+        {
+          name;
+        }
+        return <DynamicComponent key={subchild.options.selector + i++} name={name} child={subchild} />;
+      })}
     </div>
   );
 };

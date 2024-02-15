@@ -9,8 +9,9 @@ const Ct_headline = ({ child, className, tag, ...rest }) => {
   className = child.options.classes ? child.options.classes.join(' ') : '';
   sectionClassName.addIf(className, className);
   const generatedStyle = styleGenerator(child.options.original);
-
+  console.log('Classname', className);
   tag = 'h1';
+  console.log('Hedline', child);
   if (child.options.original.tag) {
     tag = child.options.original.tag;
   }
@@ -18,12 +19,12 @@ const Ct_headline = ({ child, className, tag, ...rest }) => {
   if (!child.children) {
     return React.createElement(
       tag,
-      { style: generatedStyle, id: child.options.selector, className: className, ...rest },
+      { style: generatedStyle, id: child.options.selector, className: 'ct-headline' + className, ...rest },
       child.options.ct_content
     );
   }
   return (
-    <div id={child.options.selector} className={className} {...rest}>
+    <div id={child.options.selector} className={'ct-headline' + className} {...rest}>
       {child.children.map((subchild) => {
         const name = toPascalCase(subchild.name);
         {

@@ -10,15 +10,14 @@ const Ct_inner_content = ({ child, className, ...rest }) => {
   let i = 0;
   // const generatedStyle = styleGenerator(child.options.original);
   return (
-    <div  id={child.options.selector} className={className} {...rest}>
-
+    <div id={child.options.selector} className={'ct-inner-content ' + className} {...rest}>
       {child.children.map((subchild) => {
         const name = toPascalCase(subchild.name);
-        {name}
-        return <DynamicComponent key={subchild.subchild + i++}  name={name} child={subchild} />;
-      }
-      )}
-
+        {
+          name;
+        }
+        return <DynamicComponent key={subchild.subchild + i++} name={name} child={subchild} />;
+      })}
     </div>
   );
 };

@@ -37,18 +37,20 @@ const Ct_image = ({
   if (options.src) {
     console.log('CASO 1 IMG');
     return (
-      <img
-        id={child.options.selector}
-        src={options.src}
-        // alt={alt}
-        style={generatedStyle}
-        className={className}
-        // style={imgStyle}
-        width={options.width}
-        height={options.height}
-        loading={lazy ? 'lazy' : 'eager'}
-        {...rest}
-      />
+      <div>
+        <img
+          id={child.options.selector}
+          src={options.src}
+          // alt={alt}
+          style={generatedStyle}
+          className={className}
+          // style={imgStyle}
+          width={options.width}
+          height={options.height}
+          loading={lazy ? 'lazy' : 'eager'}
+          {...rest}
+        />
+      </div>
     );
   }
   if (options.image_type == 1 || (options.image_type == 2 && !options.attachment_id)) {
@@ -56,18 +58,20 @@ const Ct_image = ({
     const alt = options.alt;
     console.log('CASO 2 IMG');
     return (
-      <img
-        id={child.options.selector}
-        src={src}
-        alt={alt}
-        className={className}
-        width={options.width}
-        height={options.height}
-        style={generatedStyle}
-        // style={imgStyle}
-        loading={lazy ? 'lazy' : 'eager'}
-        {...rest}
-      />
+      <div>
+        <img
+          id={child.options.selector}
+          src={src}
+          alt={alt}
+          className={className}
+          width={options.width}
+          height={options.height}
+          style={generatedStyle}
+          // style={imgStyle}
+          loading={lazy ? 'lazy' : 'eager'}
+          {...rest}
+        />
+      </div>
     );
   } else {
     const attachment_id = options.attachment_id;
@@ -77,18 +81,20 @@ const Ct_image = ({
       let attachment_size = options.attachment_size ? options.attachment_size : 'thumbnail';
 
       return (
-        <img
-          id={child.options.selector}
-          src={src}
-          alt={alt}
-          className={className}
-          // style={imgStyle}
-          width={options.width}
-          style={generatedStyle}
-          height={options.height}
-          loading={lazy ? 'lazy' : 'eager'}
-          {...rest}
-        />
+        <div>
+          <img
+            id={child.options.selector}
+            src={src}
+            alt={alt}
+            className={className}
+            // style={imgStyle}
+            width={options.width}
+            style={generatedStyle}
+            height={options.height}
+            loading={lazy ? 'lazy' : 'eager'}
+            {...rest}
+          />
+        </div>
       );
     }
   }

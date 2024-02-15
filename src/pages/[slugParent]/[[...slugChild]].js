@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import { Helmet } from 'react-helmet';
 
-
-
 import { getPageByUri, getAllPages, getBreadcrumbsByUri } from 'lib/pages';
 import { WebpageJsonLd } from 'lib/json-ld';
 import { helmetSettingsFromMetadata } from 'lib/site';
@@ -20,18 +18,9 @@ import Breadcrumbs from 'components/Breadcrumbs';
 
 import styles from 'styles/pages/Page.module.scss';
 
-
-
-
-
 export default function Page({ page, breadcrumbs }) {
   const { title, metaTitle, description, slug, content, featuredImage, children, ctBuilderJson, css } = page;
-
-
-  
-
-
-
+  // console.log('page', page);
   const { metadata: siteMetadata = {} } = useSite();
 
   const { metadata } = usePageMetadata({
@@ -54,11 +43,11 @@ export default function Page({ page, breadcrumbs }) {
   const hasBreadcrumbs = Array.isArray(breadcrumbs) && breadcrumbs.length > 0;
 
   const helmetSettings = helmetSettingsFromMetadata(metadata);
-
+  console.log('CSS', css);
   return (
     <Layout>
       <Helmet {...helmetSettings}>
-        <style type="text/css">{css}</style>
+        <style type="text/css">{JSON.parse(css)}</style>
       </Helmet>
 
       <WebpageJsonLd
@@ -81,7 +70,7 @@ export default function Page({ page, breadcrumbs }) {
       </Header> */}
 
       <Content>
-      <Oxygen key={slug} json={ctBuilderJson} />
+        <Oxygen key={slug} json={ctBuilderJson} />
         <Section>
           <Container>
             <div
@@ -120,7 +109,6 @@ export default function Page({ page, breadcrumbs }) {
 
 export async function getStaticProps({ params = {} } = {}) {
   const { slugParent, slugChild } = params;
-
 
   // We can use the URI to look up our page and subsequently its ID, so
   // we can first contruct our URI from the page params
