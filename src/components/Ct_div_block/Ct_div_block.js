@@ -11,19 +11,16 @@ const Ct_div_block = ({ child, className, ...rest }) => {
   const generatedStyle = styleGenerator(child.options.original);
   let i = 0;
   if (!child.children) {
-  
     return (
       <div key={child.options.selector} style={generatedStyle} id={child.options.selector} className={className} {...rest}>
         {child.options.ct_content}
       </div>
     );
-    
   }
 
   return (
     <div style={generatedStyle} id={child.options.selector} className={className} {...rest}>
-
-      {child.children.map((subchild) => {
+      {child.children.map((subchild, i) => {
         const name = toPascalCase(subchild.name);
         {name}
         return <DynamicComponent key={subchild.selector + i++}  name={name} child={subchild} />;
@@ -35,9 +32,11 @@ const Ct_div_block = ({ child, className, ...rest }) => {
 };
 
 function toPascalCase(str) {
-  return str.replace(/(?:^\w|[A-Z]|\b\w|_)/g, function(word, index) {
+  return str
+    .replace(/(?:^\w|[A-Z]|\b\w|_)/g, function (word, index) {
       return index === 0 ? word.toUpperCase() : word.toLowerCase();
-  }).replace(/\s+/g, '');
- }
+    })
+    .replace(/\s+/g, '');
+}
 
 export default Ct_div_block;
