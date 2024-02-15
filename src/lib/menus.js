@@ -35,9 +35,16 @@ export async function getAllMenus() {
 export async function findMenuById({ menuId }) {
   const apolloClient = getApolloClient();
 
+  // Assicurati che menuId sia un intero
+  const menuIdInt = parseInt(menuId, 10);
+  if (isNaN(menuIdInt)) {
+    throw new Error("menuId deve essere un numero intero.");
+  }
+
   const data = await apolloClient.query({
     query: QUERY_MENU_BY_ID,
-      variables: { menuId },
+    //  variables: { menuId },
+    variables: { menuId: menuIdInt },
   });
 
   const menus = data?.data.menus.edges.map(mapMenuData);
