@@ -98,7 +98,9 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-body,
+body {
+  margin: 0;
+}
 h1,
 h2,
 h3,
@@ -107,8 +109,8 @@ h5,
 h6 {
   margin: 0;
 
-  font-size: 36px;
-  font-weight: 700;
+  // font-size: 36px;
+  // font-weight: 700;
 }
 article,
 aside,
@@ -1127,114 +1129,3 @@ div.oxy-repeater-pages-wrap {
   display: table-footer-group;
 }
 /* End custom HTML tag support */
-#section-2-11 > .ct-section-inner-wrap {
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#section-2-11 {
-  display: block;
-}
-#section-2-11 {
-  text-align: left;
-}
-#section-31-11 > .ct-section-inner-wrap {
-  max-width: 100%;
-}
-#section-22-11 > .ct-section-inner-wrap {
-  max-width: 100%;
-}
-#section-4-11 > .ct-section-inner-wrap {
-  max-width: 100%;
-}
-#section-53-11 > .ct-section-inner-wrap {
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#section-53-11 {
-  display: block;
-}
-#section-53-11 {
-  text-align: left;
-}
-#section-55-11 > .ct-section-inner-wrap {
-  max-width: 100%;
-}
-#div_block-33-11 {
-  width: 50%;
-  display: flex;
-  justify-content: space-between;
-}
-#div_block-36-11 {
-  width: 50%;
-  flex-direction: column;
-  display: flex;
-  text-align: left;
-  justify-content: space-between;
-}
-#div_block-37-11 {
-  flex-direction: column;
-  display: flex;
-  justify-content: flex-start;
-  height: 100%;
-}
-#div_block-6-11 {
-  width: 50%;
-  display: flex;
-  justify-content: space-between;
-}
-#div_block-7-11 {
-  width: 50%;
-  flex-direction: column;
-  display: flex;
-  text-align: left;
-  justify-content: space-between;
-}
-#div_block-24-11 {
-  flex-direction: column;
-  display: flex;
-  justify-content: flex-start;
-  height: 100%;
-}
-@media (max-width: 991px) {
-  #new_columns-32-11 > .ct-div-block {
-    width: 100% !important;
-  }
-  #new_columns-32-11 {
-    flex-direction: column;
-  }
-}
-#new_columns-32-11 {
-  height: 150vh;
-}
-@media (max-width: 991px) {
-  #new_columns-5-11 > .ct-div-block {
-    width: 100% !important;
-  }
-  #new_columns-5-11 {
-    flex-direction: column;
-  }
-}
-#new_columns-5-11 {
-  height: 150vh;
-}
-#_rich_text-3-11 {
-  text-align: center;
-  font-size: 18px;
-  line-height: 19px;
-}
-#image-35-11 {
-  margin-top: auto;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: auto;
-}
-#image-11-11 {
-  margin-top: auto;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: auto;
-}

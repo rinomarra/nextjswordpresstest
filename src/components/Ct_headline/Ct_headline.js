@@ -19,8 +19,14 @@ const Ct_headline = ({ child, className, tag, ...rest }) => {
   if (!child.children) {
     return React.createElement(
       tag,
-      { style: generatedStyle, id: child.options.selector, className: 'ct-headline' + className, ...rest },
-      child.options.ct_content
+      {
+        style: generatedStyle,
+        id: child.options.selector,
+        className: 'ct-headline' + className,
+        ...rest,
+        dangerouslySetInnerHTML: { __html: child.options.ct_content },
+      },
+      null
     );
   }
   return (

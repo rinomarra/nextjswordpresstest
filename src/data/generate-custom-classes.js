@@ -7,6 +7,7 @@ flex
 align-items-center
 w-1of3
 h-full
+bg-black
 pt-20
 m-auto
 text-intro
@@ -25,5 +26,4 @@ relative
 absolute
 top-0
 bg-green-500
-bg-black
 flex-col

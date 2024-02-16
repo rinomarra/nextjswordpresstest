@@ -1,17 +1,14 @@
+import React from 'react';
 import ClassName from 'models/classname';
+import styles from './Ct_link.module.scss';
 
-import styles from './Ct_link_button.module.scss';
+import { styleGenerator } from '../../lib/util';
 import DynamicComponent from 'components/DynamicComponent';
-import { useEffect } from 'react';
-const Ct_link_button = ({ child, className, ...rest }) => {
-  const sectionClassName = new ClassName(styles.section);
-  if (!child.options.classes) {
-    className = '';
-  } else {
-    className = child.options.classes.join(' ');
-  }
 
-  sectionClassName.addIf(className, className);
+const Ct_link = ({ child, ...rest }) => {
+  const sectionClassName = new ClassName(styles.section);
+  let className = child.options.classes ? child.options.classes.join(' ') : '';
+  console.log('text_LINK_CHILD: ', child);
   const options = child.options.original;
   // Funzione di decode del url se necessario
   function decodeUrlIfNeeded(options) {
@@ -30,30 +27,26 @@ const Ct_link_button = ({ child, className, ...rest }) => {
   sectionClassName.addIf(className, className);
   if (!child.children) {
     return (
-      <a
-        id={child.options.selector}
-        className={'ct-link-button ' + className}
-        {...rest}
-        href={url}
-        target={target}
-        rel={rel}
-      >
-        {child.options.ct_content}
+      <a id={child.options.selector} className={className} {...rest} href={url} target={target} rel={rel}>
+        {/* DA CONTROLLARE LOGICA PER IL LINK */}
+        {options?.ct_content ? options.ct_content : child.options.ct_content}
       </a>
     );
   }
   return (
-    <div id={child.options.selector} className={className} {...rest}>
-      {child.children.map((subchild) => {
+    <a id={child.options.selector} className={'ct-link ' + className} {...rest} href={url} target={target} rel={rel}>
+      {child.children.map((subchild, i) => {
         const name = toPascalCase(subchild.name);
         {
           name;
         }
-        return <DynamicComponent name={name} child={subchild} />;
+        return <DynamicComponent key={subchild.options.selector + i++} name={name} child={subchild} />;
       })}
-    </div>
+    </a>
   );
 };
+
+export default Ct_link;
 
 function toPascalCase(str) {
   return str
@@ -62,5 +55,3 @@ function toPascalCase(str) {
     })
     .replace(/\s+/g, '');
 }
-
-export default Ct_link_button;

@@ -1,23 +1,39 @@
 import React from 'react';
 import ClassName from 'models/classname';
-import dynamicStyles from './Ct_span.module.scss';
+import styles from './Ct_span.module.scss';
 import DynamicComponent from 'components/DynamicComponent';
 
-import { styleGenerator } from '../../lib/util';
-
 const Ct_span = ({ child, className, tag = 'div', ...rest }) => {
-  // Esempio di utilizzo di ClassName per combinare className prop con stili del modulo
-  const classNames = new ClassName(dynamicStyles.container, className);
+  const sectionClassName = new ClassName(styles.section);
+  console.log('Child SPAN', child);
+  if (!child.options.classes) {
+    className = '';
+  } else {
+    className = child.options.classes.join(' ');
+  }
 
-  const generatedStyle = styleGenerator ? styleGenerator(child.options) : {};
+  sectionClassName.addIf(className, className);
 
-  // Utilizzo del tag dinamico per il componente
-  const Tag = tag;
-
+  if (!child.children) {
+    return (
+      <span
+        id={child.options.selector}
+        className={'ct-span ' + className}
+        {...rest}
+        dangerouslySetInnerHTML={{ __html: child.options.ct_content }}
+      ></span>
+    );
+  }
   return (
-    <Tag className={classNames.toString()} style={generatedStyle} {...rest}>
-      {/* Qui potresti utilizzare DynamicComponent e altre logiche specifiche del componente */}
-    </Tag>
+    <div id={child.options.selector} className={'ct-span ' + className} {...rest}>
+      {child.children.map((subchild) => {
+        const name = toPascalCase(subchild.name);
+        {
+          name;
+        }
+        return <DynamicComponent name={name} child={subchild} />;
+      })}
+    </div>
   );
 };
 

@@ -6,11 +6,11 @@ import { styleGenerator } from '../../lib/util';
 
 const Ct_div_block = ({ child, className, ...rest }) => {
   const sectionClassName = new ClassName(styles.section);
+  console.log('Child DIV Block', child);
   className = child.options.classes ? child.options.classes.join(' ') : '';
   sectionClassName.addIf(className, className);
   const generatedStyle = styleGenerator(child.options.original);
   let i = 0;
-  console.log('Child DIV Block', child);
   if (!child.children) {
     return (
       <div
