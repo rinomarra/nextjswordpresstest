@@ -1,17 +1,10 @@
 w-full
-fixed
 z-40
-px-12
-py-8
-flex
-align-items-center
-w-1of3
-h-full
-bg-black
 pt-20
 m-auto
 text-intro
 p-28
+h-full
 font-bold
 text-intro-bold
 mt-auto
@@ -26,4 +19,6 @@ relative
 absolute
 top-0
 bg-green-500
+bg-black
+flex
 flex-col
