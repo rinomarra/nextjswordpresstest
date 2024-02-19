@@ -1,10 +1,10 @@
 import ClassName from 'models/classname';
 
-import styles from './Ct_inner_content.module.scss';
+//import styles from './Ct_inner_content.module.scss';
 import DynamicComponent from 'components/DynamicComponent';
-import { styleGenerator } from '../../lib/util';
+//import { styleGenerator } from '../../lib/util';
 const Ct_inner_content = ({ child, className, ...rest }) => {
-  const sectionClassName = new ClassName(styles.section);
+  const sectionClassName = new ClassName();
   className = child.options.classes ? child.options.classes.join(' ') : '';
   sectionClassName.addIf(className, className);
   let i = 0;

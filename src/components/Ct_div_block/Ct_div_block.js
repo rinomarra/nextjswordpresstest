@@ -1,21 +1,22 @@
 import ClassName from 'models/classname';
 
-import styles from './Ct_div_block.module.scss';
+//import styles from './Ct_div_block.module.scss';
 import DynamicComponent from 'components/DynamicComponent';
-import { styleGenerator } from '../../lib/util';
+//import { styleGenerator } from '../../lib/util';
 
 const Ct_div_block = ({ child, className, ...rest }) => {
-  const sectionClassName = new ClassName(styles.section);
+  //const sectionClassName = new ClassName(styles.section);
+  const sectionClassName = new ClassName();
   console.log('Child DIV Block', child);
   className = child.options.classes ? child.options.classes.join(' ') : '';
   sectionClassName.addIf(className, className);
-  const generatedStyle = styleGenerator(child.options.original);
+  //const generatedStyle = styleGenerator(child.options.original);
   let i = 0;
   if (!child.children) {
     return (
       <div
         key={child.options.selector}
-        style={generatedStyle}
+        //style={generatedStyle}
         id={child.options.selector}
         className={'ct-div-block ' + className}
         {...rest}
@@ -26,7 +27,8 @@ const Ct_div_block = ({ child, className, ...rest }) => {
   }
 
   return (
-    <div style={generatedStyle} id={child.options.selector} className={'ct-div-block ' + className} {...rest}>
+    //<div style={generatedStyle} id={child.options.selector} className={'ct-div-block ' + className} {...rest}>
+    <div id={child.options.selector} className={'ct-div-block ' + className} {...rest}>
       {child.children.map((subchild, i) => {
         const name = toPascalCase(subchild.name);
         {

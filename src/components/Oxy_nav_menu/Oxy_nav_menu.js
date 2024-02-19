@@ -1,21 +1,15 @@
 import ClassName from 'models/classname';
 
 
-import { findMenuByLocation, MENU_LOCATION_NAVIGATION_DEFAULT } from 'lib/menus';
+import { MENU_LOCATION_NAVIGATION_DEFAULT } from 'lib/menus';
 import IigapNav from 'components/IigapNav';
 const Oxy_nav_menu = ({ child, ...rest }) => {
 
-  let menuId = child.options.original.menu_id;
-  // menuId should be integer
-  if (isNaN(menuId)) {
-    menuId = findMenuByLocation(MENU_LOCATION_NAVIGATION_DEFAULT).id;
-  }
-  else {
-    menuId = parseInt(menuId);
-  }
+  let idMenu = child.options.original.menu_id;
   return(
     <IigapNav
-      menuId={menuId}
+    idMenu={idMenu}
+      {...rest}
     />
   )
 

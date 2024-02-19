@@ -1,16 +1,16 @@
 import ClassName from 'models/classname';
 
-import styles from './Ct_section.module.scss';
+//import styles from './Ct_section.module.scss';
 import DynamicComponent from 'components/DynamicComponent';
-import { styleGenerator } from '../../lib/util';
+//import { styleGenerator } from '../../lib/util';
 import React, { useState, useEffect } from 'react';
 
 const Ct_section = ({ child, className, tag, ...rest }) => {
-  const sectionClassName = new ClassName(styles.section);
+  const sectionClassName = new ClassName();
   className = child.options.classes ? child.options.classes.join(' ') : '';
   sectionClassName.addIf(className, className);
 
-  const generatedStyle = styleGenerator(child.options.original);
+  //const generatedStyle = styleGenerator(child.options.original);
 
   let i = 0;
   if (child.options.original.tag != undefined) {
@@ -20,7 +20,7 @@ const Ct_section = ({ child, className, tag, ...rest }) => {
   }
 
   return (
-    <section key={child.selector} style={generatedStyle} id={child.options.selector} className={className} {...rest}>
+    <section key={child.selector} id={child.options.selector} className={className} {...rest}>
       {child.options.original.video_background && (
         <video autoPlay muted loop id={child.options.selector}>
           <source src={child.options.original.video_background} type="video/mp4" />

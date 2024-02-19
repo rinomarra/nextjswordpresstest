@@ -106,6 +106,7 @@ export const QUERY_PAGE_BY_URI = gql`
       content
       ctBuilderJson
       css
+      masterCss
       featuredImage {
         node {
           altText

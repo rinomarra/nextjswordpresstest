@@ -8,18 +8,17 @@ import useSite from 'hooks/use-site';
 import usePageMetadata from 'hooks/use-page-metadata';
 
 import Layout from 'components/Layout';
-import Header from 'components/Header';
+
 import Content from 'components/Content';
 import Section from 'components/Section';
 import Container from 'components/Container';
 import Oxygen from 'components/Oxygen';
-import FeaturedImage from 'components/FeaturedImage';
-import Breadcrumbs from 'components/Breadcrumbs';
+
 
 import styles from 'styles/pages/Page.module.scss';
 
 export default function Page({ page, breadcrumbs }) {
-  const { title, metaTitle, description, slug, content, featuredImage, children, ctBuilderJson, css } = page;
+  const { title, metaTitle, description, slug, content, featuredImage, children, ctBuilderJson, css, masterCss } = page;
   // console.log('page', page);
   const { metadata: siteMetadata = {} } = useSite();
 
@@ -43,11 +42,12 @@ export default function Page({ page, breadcrumbs }) {
   const hasBreadcrumbs = Array.isArray(breadcrumbs) && breadcrumbs.length > 0;
 
   const helmetSettings = helmetSettingsFromMetadata(metadata);
-  console.log('CSS', css);
   return (
     <Layout>
       <Helmet {...helmetSettings}>
+        <style type="text/css">{JSON.parse(masterCss)}</style>
         <style type="text/css">{JSON.parse(css)}</style>
+
       </Helmet>
 
       <WebpageJsonLd

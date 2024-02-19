@@ -3,73 +3,6 @@
 @tailwind utilities;
 @import "styles/settings/__settings";
 @import "style.css";
-
-* {
-  box-sizing: border-box;
-}
-.w-1of3 {
-  @apply w-1/3;
-}
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, sans-serif;
-}
-
-p {
-  line-height: 1.6;
-  margin: 1.2em 0;
-}
-
-ul {
-  padding-left: 1.2em;
-}
-
-a {
-  color: $color-primary;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-input {
-  &[type="text"],
-  &[type="search"],
-  &[type="email"] {
-    outline-offset: 0;
-    padding: 0.5em 0.8em;
-  }
-}
-
-figcaption {
-  color: $color-gray-500;
-  font-size: 0.9em;
-  text-align: center;
-  font-style: italic;
-  margin-top: 0.6em;
-}
-
-.sr-only {
-  display: block;
-  overflow: hidden;
-  position: absolute;
-  top: -9999px;
-  left: -9999px;
-  width: 0;
-  height: 0;
-}
-// OXIGEN CSS DAI FILE ORIGNALI
-.ct-section-inner-wrap {
-  margin-left: auto;
-  margin-right: auto;
-  height: 100%;
-  min-height: inherit;
-}
-
-// OXIGEN CSS FILE ORIGNALE
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 button,
 hr,
@@ -98,9 +31,7 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-body {
-  margin: 0;
-}
+body,
 h1,
 h2,
 h3,
@@ -108,9 +39,6 @@ h4,
 h5,
 h6 {
   margin: 0;
-
-  // font-size: 36px;
-  // font-weight: 700;
 }
 article,
 aside,
@@ -276,8 +204,8 @@ body.oxygen-aos-enabled {
   position: relative !important;
 }
 .oxygen-unslider-container:not(.unslider-fade) > ul {
-  list-style: none;
-  width: 0px;
+	list-style: none;
+	width: 0px;
 }
 .oxygen-unslider-container:not(.unslider-fade):not(.unslider-horizontal) > ul > li {
   opacity: 0;
@@ -405,7 +333,7 @@ div.ct-fancy-icon {
   animation-iteration-count: 1;
 }
 .oxy-sticky-header .oxygen-show-in-sticky-only {
-  display: none;
+  display:  none;
 }
 .oxy-sticky-header.oxy-sticky-header-active .oxygen-show-in-sticky-only {
   display: block;
@@ -555,7 +483,9 @@ div.ct-fancy-icon {
 .oxy-nav-menu.oxy-nav-menu-open .menu-item-has-children > a::after {
   display: none;
 }
-.oxy-nav-menu.oxy-nav-menu-open.oxy-nav-menu-responsive-dropdowns .menu-item .sub-menu {
+.oxy-nav-menu.oxy-nav-menu-open.oxy-nav-menu-responsive-dropdowns
+  .menu-item
+  .sub-menu {
   display: flex;
   position: static;
   animation-name: none;
@@ -585,11 +515,15 @@ div.ct-fancy-icon {
 .oxy-nav-menu-open .oxy-nav-menu-hamburger .oxy-nav-menu-hamburger-line {
   display: none;
 }
-.oxy-nav-menu-open .oxy-nav-menu-hamburger .oxy-nav-menu-hamburger-line:first-child {
+.oxy-nav-menu-open
+  .oxy-nav-menu-hamburger
+  .oxy-nav-menu-hamburger-line:first-child {
   display: initial;
   position: relative;
 }
-.oxy-nav-menu-open .oxy-nav-menu-hamburger .oxy-nav-menu-hamburger-line:last-child {
+.oxy-nav-menu-open
+  .oxy-nav-menu-hamburger
+  .oxy-nav-menu-hamburger-line:last-child {
   display: initial;
   position: relative;
   transform: rotate(90deg);
@@ -601,7 +535,9 @@ div.ct-fancy-icon {
 .oxy-nav-menu.oxy-nav-menu-vertical .menu-item a {
   flex-direction: row;
 }
-.oxy-nav-menu-dropdowns.oxy-nav-menu-dropdown-arrow .menu-item-has-children > a::after {
+.oxy-nav-menu-dropdowns.oxy-nav-menu-dropdown-arrow
+  .menu-item-has-children
+  > a::after {
   width: 0.35em;
   height: 0.35em;
   margin-left: 0.5em;
@@ -610,8 +546,13 @@ div.ct-fancy-icon {
   transform: rotate(135deg);
   content: "";
 }
-.oxy-nav-menu-dropdowns.oxy-nav-menu-dropdown-arrow .sub-menu .menu-item-has-children > a::after,
-.oxy-nav-menu-dropdowns.oxy-nav-menu-dropdown-arrow.oxy-nav-menu-vertical .menu-item-has-children > a::after {
+.oxy-nav-menu-dropdowns.oxy-nav-menu-dropdown-arrow
+  .sub-menu
+  .menu-item-has-children
+  > a::after,
+.oxy-nav-menu-dropdowns.oxy-nav-menu-dropdown-arrow.oxy-nav-menu-vertical
+  .menu-item-has-children
+  > a::after {
   transform: rotate(45deg);
 }
 .oxy-social-icons {
@@ -1093,39 +1034,39 @@ div.oxy-repeater-pages-wrap {
   display: list-item;
 }
 :-webkit-any(table, div._important),
-:is(table, div._important) {
-  display: table;
+:is(table, div._important){
+	display: table;
 }
 :is(thead, div._important),
-:-webkit-any(thead, div._important) {
-  display: table-header-group;
+:-webkit-any(thead, div._important){
+	display: table-header-group;
 }
 :is(tr, div._important),
 :-webkit-any(tr, div._important) {
-  display: table-row;
+	display: table-row;
 }
 :is(tbody, div._important),
 :-webkit-any(tbody, div._important) {
-  display: table-row-group;
+	display: table-row-group;
 }
 :is(th, td, div._important),
 :-webkit-any(th, td, div._important) {
-  display: table-cell;
+	display: table-cell;
 }
 :is(caption, div._important),
 :-webkit-any(caption, div._important) {
-  display: table-caption;
+	display: table-caption;
 }
 :is(colgroup, div._important),
-:-webkit-any(colgroup, div._important) {
-  display: table-column-group;
+:-webkit-any(colgroup, div._important){
+	display: table-column-group;
 }
 :is(col, div._important),
-:-webkit-any(col, div._important) {
-  display: table-column;
+:-webkit-any(col, div._important){
+	display: table-column;
 }
 :is(tfoot, div._important),
-:-webkit-any(tfoot, div._important) {
-  display: table-footer-group;
+:-webkit-any(tfoot, div._important){
+	display: table-footer-group;
 }
 /* End custom HTML tag support */

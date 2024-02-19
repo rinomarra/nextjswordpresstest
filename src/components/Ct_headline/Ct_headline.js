@@ -1,14 +1,14 @@
 import ClassName from 'models/classname';
 
-import styles from './Ct_headline.module.scss';
+//import styles from './Ct_headline.module.scss';
 import DynamicComponent from 'components/DynamicComponent';
 import React, { useState, useEffect } from 'react';
-import { styleGenerator } from '../../lib/util';
+//import { styleGenerator } from '../../lib/util';
 const Ct_headline = ({ child, className, tag, ...rest }) => {
-  const sectionClassName = new ClassName(styles.section);
+  const sectionClassName = new ClassName();
   className = child.options.classes ? child.options.classes.join(' ') : '';
   sectionClassName.addIf(className, className);
-  const generatedStyle = styleGenerator(child.options.original);
+  //const generatedStyle = styleGenerator(child.options.original);
   console.log('Classname', className);
   tag = 'h1';
   console.log('Hedline', child);
@@ -20,7 +20,7 @@ const Ct_headline = ({ child, className, tag, ...rest }) => {
     return React.createElement(
       tag,
       {
-        style: generatedStyle,
+        //style: generatedStyle,
         id: child.options.selector,
         className: 'ct-headline' + className,
         ...rest,

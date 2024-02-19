@@ -3,7 +3,7 @@ import { getTopLevelPages } from 'lib/pages';
 import { QUERY_ALL_MENUS } from 'data/menus';
 import { QUERY_MENU_BY_ID } from 'data/menus';
 
-export const MENU_LOCATION_NAVIGATION_DEFAULT = 'DEFAULT_NAVIGATION';
+export const MENU_LOCATION_NAVIGATION_DEFAULT = 'NEXT_MAIN_MENU';
 
 /**
  * getAllMenus
@@ -32,7 +32,7 @@ export async function getAllMenus() {
   };
 }
 
-export async function findMenuById( menuId ) {
+export async function getMenuPositionById( menuId ) {
   const apolloClient = getApolloClient();
 
   // Assicurati che menuId sia un intero
@@ -46,21 +46,10 @@ export async function findMenuById( menuId ) {
     //  variables: { menuId },
     variables: { menuId: menuIdInt },
   });
-
-  const menus = data?.data.menus.edges.map(mapMenuData);
-
-  const defaultNavigation = createMenuFromPages({
-    locations: [MENU_LOCATION_NAVIGATION_DEFAULT],
-    pages: await getTopLevelPages({
-      queryIncludes: 'index',
-    }),
-  });
-
-  menus.push(defaultNavigation);
-
-  return {
-    menus,
-  };
+  
+  const menus = data?.data.menus.edges[0].node.locations[0];
+  return menus
+  
 }
 
 
@@ -144,14 +133,14 @@ export function findMenuByLocation(menus, location) {
  * findMenuItemById
  */
 
-export function findMenuItemById(id) {
-  if (!Array.isArray(menu)) {
-    throw new Error('Failed to find menu item by id - menu is not an array.');
-  }
+export function findMenuLocationById(menus, idMenu) {
 
-  const menuItem = menu.find((item) => {
-    return item.id === id;
-  });
 
-  return menuItem;
+  const menu = menus.filter(menu => menu.menuId == idMenu);
+
+
+  return menu[0].locations[0];
+
+
+
 }

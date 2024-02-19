@@ -35,7 +35,7 @@ const nextConfig = {
     
   },
   images: {
-    domains: ['monika.ventunoandco.com'],
+    domains: ['monika.ventunoandco.com','stage.131designstudio.com'],
   }
 };
 
