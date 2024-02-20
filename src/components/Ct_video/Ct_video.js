@@ -12,16 +12,13 @@ const Ct_video = ({ child, className, ...rest }) => {
   // const generatedStyle = styleGenerator(child.options.original);
   let i = 0;
   function getYouTubeEmbedId(url) {
-    // Match il pattern dell'ID del video da un URL di YouTube
     const match = url.match(
       /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
     );
 
     if (match && match[1]) {
-      // Restituisci l'ID del video
       return match[1];
     } else {
-      // Se l'URL non corrisponde al pattern atteso, restituisci null o gestisci l'errore in modo appropriato
       return null;
     }
   }
