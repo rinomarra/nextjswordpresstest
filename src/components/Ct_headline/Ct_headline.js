@@ -22,7 +22,7 @@ const Ct_headline = ({ child, className, tag, ...rest }) => {
       {
         //style: generatedStyle,
         id: child.options.selector,
-        className: 'ct-headline' + className,
+        className: 'ct-headline ' + className,
         ...rest,
         dangerouslySetInnerHTML: { __html: child.options.ct_content },
       },
@@ -30,7 +30,7 @@ const Ct_headline = ({ child, className, tag, ...rest }) => {
     );
   }
   return (
-    <div id={child.options.selector} className={'ct-headline' + className} {...rest}>
+    <div id={child.options.selector} className={'ct-headline ' + className} {...rest}>
       {child.children.map((subchild) => {
         const name = toPascalCase(subchild.name);
         {
