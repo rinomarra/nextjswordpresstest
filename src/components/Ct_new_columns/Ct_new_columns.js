@@ -9,7 +9,7 @@ const Ct_new_columns = ({ child, tag = 'div', ...rest }) => {
   // Esempio di utilizzo di ClassName per combinare className prop con stili del modulo
   const sectionClassName = new ClassName(styles.section);
   let className = child.options.classes ? child.options.classes.join(' ') : '';
-  console.log('NEW_COLUM_child: ', child);
+  // console.log('NEW_COLUM_child: ', child);
   const options = child.options.original;
 
   // Esempio di generazione dinamica di stili, se necessario

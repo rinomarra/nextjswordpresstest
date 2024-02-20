@@ -32,10 +32,10 @@ const Ct_image = ({
   //   height: height ? `${height}px` : 'auto',
   // };
   useEffect(() => {
-    console.log('child', child);
+    // console.log('child', child);
   }, []);
   if (options.src) {
-    console.log('CASO 1 IMG');
+    // console.log('CASO 1 IMG');
     return (
       <div>
         <img
@@ -56,7 +56,7 @@ const Ct_image = ({
   if (options.image_type == 1 || (options.image_type == 2 && !options.attachment_id)) {
     const src = options.attachment_url;
     const alt = options.alt;
-    console.log('CASO 2 IMG');
+    // console.log('CASO 2 IMG');
     return (
       <div>
         <img

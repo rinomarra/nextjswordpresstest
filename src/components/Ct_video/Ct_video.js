@@ -6,7 +6,7 @@ import DynamicComponent from 'components/DynamicComponent';
 const Ct_video = ({ child, className, ...rest }) => {
   const sectionClassName = new ClassName();
   className = child.options.classes ? child.options.classes.join(' ') : '';
-  console.log('Child VIDEO', child);
+  // console.log('Child VIDEO', child);
 
   sectionClassName.addIf(className, className);
   // const generatedStyle = styleGenerator(child.options.original);

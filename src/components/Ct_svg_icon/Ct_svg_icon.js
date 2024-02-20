@@ -6,19 +6,13 @@ import DynamicComponent from 'components/DynamicComponent';
 import { styleGenerator } from '../../lib/util';
 
 const Ct_svg_icon = ({ child, className, tag = 'div', ...rest }) => {
-  // Esempio di utilizzo di ClassName per combinare className prop con stili del modulo
   const classNames = new ClassName(dynamicStyles.container, className);
 
   const generatedStyle = styleGenerator ? styleGenerator(child.options) : {};
 
-  // Utilizzo del tag dinamico per il componente
   const Tag = tag;
 
-  return (
-    <Tag className={classNames.toString()} style={generatedStyle} {...rest}>
-      {/* Qui potresti utilizzare DynamicComponent e altre logiche specifiche del componente */}
-    </Tag>
-  );
+  return <Tag className={classNames.toString()} style={generatedStyle} {...rest}></Tag>;
 };
 function toPascalCase(str) {
   return str

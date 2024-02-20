@@ -2,6 +2,7 @@ import ClassName from 'models/classname';
 
 import styles from './Ct_text_block.module.scss';
 import DynamicComponent from 'components/DynamicComponent';
+import Ct_span from 'components/Ct_span';
 const Ct_text_block = ({ child, className, ...rest }) => {
   const sectionClassName = new ClassName(styles.section);
   // console.log('Child TEXT Block', child);
@@ -13,6 +14,31 @@ const Ct_text_block = ({ child, className, ...rest }) => {
 
   sectionClassName.addIf(className, className);
 
+  const renderContentWithSpans = (content) => {
+    const elements = [];
+    let currentIndex = 0;
+    content.replace(/<span\s[^>]*>.*?<\/span>/g, (match, offset) => {
+      const spanIdPlaceholder = match.match(/id="(.*?)"/)[1];
+      const id = Number(spanIdPlaceholder.match(/\d+/)[0]);
+      const text_child = child.children.find((subchild) => subchild.id === id);
+      const text = text_child ? text_child.options.ct_content : '';
+      if (offset > currentIndex) {
+        elements.push(content.substring(currentIndex, offset));
+      }
+      if (text_child) {
+        elements.push(<Ct_span key={spanIdPlaceholder} child={text_child} />);
+      } else {
+        elements.push(text);
+      }
+      currentIndex = offset + match.length;
+    });
+    if (currentIndex < content.length) {
+      elements.push(content.substring(currentIndex));
+    }
+
+    return elements;
+  };
+
   if (!child.children) {
     return (
       <p
@@ -23,21 +49,23 @@ const Ct_text_block = ({ child, className, ...rest }) => {
       ></p>
     );
   }
+
   return (
     <p
       id={child.options.selector}
       className={'ct-text-block ' + className}
       {...rest}
-      // dangerouslySetInnerHTML={{ __html: child.options.ct_content }}
+      // dangerouslySetInnerHTML={{ __html: renderContentWithSpans(child.options.ct_content) }}
     >
-      {child.options.ct_content}
-      {child.children.map((subchild) => {
+      {/* {child.options.ct_content} */}
+      {renderContentWithSpans(child.options.ct_content)}
+      {/* {child.children.map((subchild) => {
         const name = toPascalCase(subchild.name);
         {
           name;
         }
         return <DynamicComponent name={name} child={subchild} key={subchild.options.selector} />;
-      })}
+      })} */}
     </p>
   );
 };

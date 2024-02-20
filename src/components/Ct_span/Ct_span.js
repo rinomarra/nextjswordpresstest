@@ -5,7 +5,7 @@ import DynamicComponent from 'components/DynamicComponent';
 
 const Ct_span = ({ child, className, tag = 'div', ...rest }) => {
   const sectionClassName = new ClassName(styles.section);
-  console.log('Child SPAN', child);
+  // console.log('Child SPAN', child);
   if (!child.options.classes) {
     className = '';
   } else {
@@ -15,6 +15,7 @@ const Ct_span = ({ child, className, tag = 'div', ...rest }) => {
   sectionClassName.addIf(className, className);
 
   if (!child.children) {
+    // console.log('Child SPAN-----------------------------');
     return (
       <span
         id={child.options.selector}
@@ -25,7 +26,7 @@ const Ct_span = ({ child, className, tag = 'div', ...rest }) => {
     );
   }
   return (
-    <div id={child.options.selector} className={'ct-span ' + className} {...rest}>
+    <span span id={child.options.selector} className={'ct-span ' + className} {...rest}>
       {child.children.map((subchild) => {
         const name = toPascalCase(subchild.name);
         {
@@ -33,7 +34,7 @@ const Ct_span = ({ child, className, tag = 'div', ...rest }) => {
         }
         return <DynamicComponent name={name} child={subchild} />;
       })}
-    </div>
+    </span>
   );
 };
 

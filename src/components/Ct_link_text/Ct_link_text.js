@@ -6,7 +6,7 @@ import DynamicComponent from 'components/DynamicComponent';
 const Ct_link_text = ({ child, ...rest }) => {
   const sectionClassName = new ClassName(styles.section);
   let className = child.options.classes ? child.options.classes.join(' ') : '';
-  console.log('text_LINK_CHILD: ', child);
+  // console.log('text_LINK_CHILD: ', child);
   const options = child.options.original;
   // Funzione di decode del url se necessario
   function decodeUrlIfNeeded(options) {

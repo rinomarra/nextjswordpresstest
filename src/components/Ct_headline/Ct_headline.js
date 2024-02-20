@@ -9,9 +9,9 @@ const Ct_headline = ({ child, className, tag, ...rest }) => {
   className = child.options.classes ? child.options.classes.join(' ') : '';
   sectionClassName.addIf(className, className);
   //const generatedStyle = styleGenerator(child.options.original);
-  console.log('Classname', className);
+  // console.log('Classname', className);
   tag = 'h1';
-  console.log('Hedline', child);
+  // console.log('Hedline', child);
   if (child.options.original.tag) {
     tag = child.options.original.tag;
   }

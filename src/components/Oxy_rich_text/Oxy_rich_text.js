@@ -4,7 +4,7 @@ import styles from './Oxy_rich_text.module.scss';
 
 const Oxy_rich_text = ({ child, className, ...rest }) => {
   const sectionClassName = new ClassName(styles.section);
-  console.log('Child OXY RICH TEXT', child);
+  // console.log('Child OXY RICH TEXT', child);
   if (!child.options.classes) {
     className = '';
   } else {

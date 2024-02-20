@@ -7,7 +7,7 @@ import DynamicComponent from 'components/DynamicComponent';
 const Ct_div_block = ({ child, className, ...rest }) => {
   //const sectionClassName = new ClassName(styles.section);
   const sectionClassName = new ClassName();
-  console.log('Child DIV Block', child);
+  // console.log('Child DIV Block', child);
   className = child.options.classes ? child.options.classes.join(' ') : '';
   sectionClassName.addIf(className, className);
   //const generatedStyle = styleGenerator(child.options.original);
