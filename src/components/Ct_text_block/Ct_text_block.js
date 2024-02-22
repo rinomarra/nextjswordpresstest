@@ -21,12 +21,13 @@ const Ct_text_block = ({ child, className, ...rest }) => {
       const spanIdPlaceholder = match.match(/id="(.*?)"/)[1];
       const id = Number(spanIdPlaceholder.match(/\d+/)[0]);
       const text_child = child.children.find((subchild) => subchild.id === id);
+      const name = toPascalCase(text_child.name);
       const text = text_child ? text_child.options.ct_content : '';
       if (offset > currentIndex) {
         elements.push(content.substring(currentIndex, offset));
       }
       if (text_child) {
-        elements.push(<Ct_span key={spanIdPlaceholder} child={text_child} />);
+        elements.push(<DynamicComponent name={name} key={spanIdPlaceholder} child={text_child} />);
       } else {
         elements.push(text);
       }

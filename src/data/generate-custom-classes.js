@@ -1,5 +1,7 @@
 w-full
 z-40
+w-1of3
+z-99
 pt-20
 m-auto
 text-intro
@@ -18,6 +20,7 @@ h-screen
 relative
 absolute
 top-0
+left-0
 bg-green-500
 bg-black
 flex
