@@ -1,0 +1,38 @@
+.w-1of3{
+    @apply w-1/3;
+}
+
+.minion30-regular{
+    font-family: "Minion Pro";
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 60px;
+    text-align: left;
+    color: #000;
+    text-transform: uppercase;
+}
+nav#next_main_menu li{
+
+    @apply text-left;
+
+}
+nav#next_main_menu li a{
+    @apply minion30-regular text-left
+    
+}
+.z-99{
+    z-index: 9999 !important;
+}
+.locked svg g *{
+
+    fill:black;
+    transition: all 0.3s;
+
+}
+svg g *{
+
+    transition: all 0.3s;
+}
+.locked header .ct-text-block {
+    @apply text-black;
+}
