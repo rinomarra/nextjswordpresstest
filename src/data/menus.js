@@ -16,6 +16,8 @@ export const QUERY_ALL_MENUS = gql`
                 title
                 target
                 path
+                menuModule
+                databaseId
               }
             }
           }
