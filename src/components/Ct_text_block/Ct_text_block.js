@@ -5,7 +5,7 @@ import DynamicComponent from 'components/DynamicComponent';
 import Ct_span from 'components/Ct_span';
 const Ct_text_block = ({ child, className, ...rest }) => {
   const sectionClassName = new ClassName(styles.section);
-  // console.log('Child TEXT Block', child);
+
   if (!child.options.classes) {
     className = '';
   } else {
@@ -24,17 +24,17 @@ const Ct_text_block = ({ child, className, ...rest }) => {
       const name = toPascalCase(text_child.name);
       const text = text_child ? text_child.options.ct_content : '';
       if (offset > currentIndex) {
-        elements.push(content.substring(currentIndex, offset));
+        elements.push(<span dangerouslySetInnerHTML={{ __html: content.substring(currentIndex, offset) }}></span>);
       }
       if (text_child) {
         elements.push(<DynamicComponent name={name} key={spanIdPlaceholder} child={text_child} />);
       } else {
-        elements.push(text);
+        elements.push(<span dangerouslySetInnerHTML={{ __html: text }} />);
       }
       currentIndex = offset + match.length;
     });
     if (currentIndex < content.length) {
-      elements.push(content.substring(currentIndex));
+      elements.push(<span dangerouslySetInnerHTML={{ __html: content.substring(currentIndex) }} />);
     }
 
     return elements;
