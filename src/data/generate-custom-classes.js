@@ -21,6 +21,12 @@ relative
 absolute
 top-0
 left-0
+sipario
+bg-blue-50
+right-0
+sipario-left
+bg-green-50
+sipario-right
 bg-green-500
 bg-black
 flex
